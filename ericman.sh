@@ -45,11 +45,11 @@ function eric_unzip {
 function eric_activate {
   echo "activating $version"
 
-  ln -nfs ./ERiC-${version:?} ${dir}/active
+  ln -nfs "./ERiC-${version:?}" "${dir}/active"
 }
 
 function eric_bundle {
-  version="$(readlink active | grep -Eo '[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:digit:]]$')"
+  version="$(readlink "${dir}/active" | grep -Eo '[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:digit:]]$')"
 
   for b in "${dir}/bundle/"*.bundle; do
     echo "$(basename "${b}" .bundle)"
