@@ -1,13 +1,9 @@
 #!/bin/env bash
 
 # usage:
-# ./$0 VERSION [TASKS...]
+# ./$0 VERSION
 # with
 #   VERSION being the version to interact with e.g. VERSION = 37.2.6.0
-#   TASK one of
-#     `dl`       to download information from elster.de
-#     `unzip`    to unzip downloaded files
-#     `activate` to set symlink of active directory to specified version
 
 # treat globs without matches as empty lists
 shopt -s nullglob
@@ -74,27 +70,7 @@ function eric_bundle {
   done
 }
 
-for i in "$@"; do
-  case $i in
-    dl)
-      eric_dl
-      shift # past argument with no value
-      ;;
-    unzip)
-      eric_unzip
-      shift
-      ;;
-    activate)
-      eric_activate
-      shift
-      ;;
-    bundle)
-      eric_bundle
-      shift
-      ;;
-    *)
-      ;;
-  esac
-done
-
-
+eric_dl
+eric_unzip
+eric_activate
+eric_bundle
