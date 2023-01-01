@@ -71,11 +71,13 @@ set it for one execution is to prepend it to the shell command:
 ERICMAN_CONTEXT="${HOME}/.ericman" ./ericman 37.2.6.0
 ```
 
-alternatively set it in the shell context using `export`:
+alternatively set it for the lifetime of the shell context using `export`
 
 ```sh
 export ERICMAN_CONTEXT="${HOME}/.ericman"
 ```
+
+and then execute ERiCman afterwards.
 
 ## Patches
 
