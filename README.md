@@ -108,6 +108,8 @@ updated version in the bundle output directory. The diff output is then stored i
 Files called `.install` are executed after the bundle has been successfully built. This is useful if you want to do
 further processing such as copying the bundled files to a different folder.
 
+The output directory of the bundle is passed as the first argument (`$1`) to the `.install` script.
+
 In order to activate the `.install` file in `grundsteuer-lib.bundle.example` set the executable bit on it:
 
 ```sh
