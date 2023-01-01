@@ -8,7 +8,7 @@ Given an ERiC version ERiCman automatically
 1. downloads the given release from
 2. extracts the downloaded packages
 3. creates a symlink from an `active` directory to the extracted files
-4. creates bundles configured via the `bundles` folder
+4. creates bundles configured via the `bundle` folder
 5. applies relevant patches to the bundles
 6. executes install scripts
 
