@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+git_root="$(git -C "${dir}" rev-parse --show-toplevel)"
+set -ex
+rsync -r --delete "${1}/" "${git_root}/src/main/resources/linux-x86-64/"

@@ -1,0 +1,19 @@
+diff --git a/active/Dokumentation/Schnittstellenbeschreibungen/ElsterBasisSchema/Schema/elster11_bisNH_extern.xsd b/ERiC-37.2.6.0-grundsteuer-xsd/elster11_bisNH_extern.xsd
+index 106c7a9..a94698a 100644
+--- a/active/Dokumentation/Schnittstellenbeschreibungen/ElsterBasisSchema/Schema/elster11_bisNH_extern.xsd
++++ b/ERiC-37.2.6.0-grundsteuer-xsd/elster11_bisNH_extern.xsd
+@@ -11,6 +11,7 @@
+ 			<xs:documentation xml:lang="DE">NutzdatenHeader-Schema mit der Version 11</xs:documentation>
+ 		</xs:annotation>
+ 	</xs:include>
++  <!--  hello world, this line has been added by a patch! -->
+ 	<!-- RootElement = Elster _______________________________________________________________-->
+ 	<xs:element name="Elster">
+ 		<xs:complexType>
+@@ -50,4 +51,4 @@
+ 			</xs:element>
+ 		</xs:sequence>
+ 	</xs:complexType>
+-</xs:schema>
+\ No newline at end of file
++</xs:schema>
