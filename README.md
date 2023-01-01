@@ -62,6 +62,21 @@ ln -s ../../active/Dokumentation/lizenz.pdf example.bundle/
 
 in order to add it.
 
+### Changing the output directory
+
+The output directory of ERiCman can be configured by setting the `ERICMAN_CONTEXT` environment variable. An easy way to
+set it for one execution is to prepend it to the shell command:
+
+```sh
+ERICMAN_CONTEXT="${HOME}/.ericman" ./ericman 37.2.6.0
+```
+
+alternatively set it in the shell context using `export`:
+
+```sh
+export ERICMAN_CONTEXT="${HOME}/.ericman"
+```
+
 ## Patches
 
 Any `VERSION.patch` files with version matching that of the version ERiCman is invoked with get applied after copying
