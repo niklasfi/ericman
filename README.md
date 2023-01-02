@@ -12,6 +12,8 @@ Given an ERiC version ERiCman automatically
 5. applies relevant patches to the bundles
 6. executes install scripts
 
+**Please note** that this script currently only has OS support for "Linux x86_64".
+
 ## Usage
 
 Configure bundles / patches / install scripts (explained further down) and execute `./ericman.sh VERSION` with `VERSION`
@@ -20,7 +22,7 @@ taking the form of `37.2.6.0`.
 Example:
 
 ```sh
-./ericman 37.2.6.0
+./ericman 37.2.6.0 linux
 ```
 
 ## Bundles
