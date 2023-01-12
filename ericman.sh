@@ -27,6 +27,7 @@ function eric_dl {
   curl -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
   curl -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Schemadokumentation.zip
   curl -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Linux-x86_64.jar
+  curl -C - -o "${dir}"/ERiC-${version:?}-Darwin-universal.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Darwin-universal.jar
 }
 
 function eric_unzip {
@@ -35,6 +36,7 @@ function eric_unzip {
   unzip -u "${dir}/ERiC-${version:?}-Dokumentation.zip" -d "${dir}"
   unzip -u "${dir}/ERiC-${version:?}-Schemadokumentation.zip" -d "${dir}"
   unzip -u "${dir}/ERiC-${version:?}-Linux-x86_64.jar" -d "${dir}" -x "META-INF/*"
+  unzip -u "${dir}/ERiC-${version:?}-Darwin-universal.jar" -d "${dir}" -x "META-INF/*"
 }
 
 function eric_activate {
