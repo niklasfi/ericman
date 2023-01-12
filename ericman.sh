@@ -8,18 +8,18 @@
 # treat globs without matches as empty lists
 shopt -s nullglob
 
-version=${1:?}
+if [ -n "${ERICMAN_CONTEXT}" ]; then
+  dir="${ERICMAN_CONTEXT}"
+else
+  dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+fi
+
+version=${1:-$(cat "${dir:?}"/VERSION)}
 shift
 
 if !(echo "$version" | grep -Eq '^[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:digit:]]$'); then
   echo "VERSION must look like 37.2.6.0"
   exit -1
-fi
-
-if [ -n "${ERICMAN_CONTEXT}" ]; then
-  dir="${ERICMAN_CONTEXT}"
-else
-  dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 fi
 
 function eric_dl {
