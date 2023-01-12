@@ -24,10 +24,9 @@ fi
 
 function eric_dl {
   echo "downloading $version"
-
-  wget -cP "${dir}" https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
-  wget -cP "${dir}" https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Schemadokumentation.zip
-  wget -cP "${dir}" https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Linux-x86_64.jar
+  curl -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
+  curl -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Schemadokumentation.zip
+  curl -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Linux-x86_64.jar
 }
 
 function eric_unzip {
