@@ -17,7 +17,7 @@ fi
 version=${1:-$(cat "${dir:?}"/VERSION)}
 shift
 
-if !(echo "$version" | grep -Eq '^[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:digit:]]$'); then
+if !(echo "${version:?}" | grep -Eq '^[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:digit:]]$'); then
   echo "VERSION must look like 37.2.6.0"
   exit -1
 fi
@@ -37,7 +37,7 @@ function eric_dl_new {
 }
 
 function eric_dl {
-  echo "downloading $version"
+  echo "downloading ${version:?}"
   if [ "${version:?}" \< "37.3." ]; then
     eric_dl_old
   else
@@ -46,7 +46,7 @@ function eric_dl {
 }
 
 function eric_unzip {
-  echo "unzipping $version"
+  echo "unzipping ${version:?}"
 
   unzip -u "${dir}/ERiC-${version:?}-Dokumentation.zip" -d "${dir}"
   unzip -u "${dir}/ERiC-${version:?}-Schemadokumentation.zip" -d "${dir}"
@@ -55,7 +55,7 @@ function eric_unzip {
 }
 
 function eric_activate {
-  echo "activating $version"
+  echo "activating ${version:?}"
 
   ln -nfs "./ERiC-${version:?}" "${dir}/active"
 }
