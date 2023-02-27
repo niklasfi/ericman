@@ -22,12 +22,27 @@ if !(echo "$version" | grep -Eq '^[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:dig
   exit -1
 fi
 
-function eric_dl {
-  echo "downloading $version"
+function eric_dl_old {
   curl -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
   curl -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Schemadokumentation.zip
   curl -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Linux-x86_64.jar
   curl -C - -o "${dir}"/ERiC-${version:?}-Darwin-universal.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Darwin-universal.jar
+}
+
+function eric_dl_new {
+  curl -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
+  curl -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-${version:?}-Schemadokumentation.zip
+  curl -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-${version:?}-Linux-x86_64.jar
+  curl -C - -o "${dir}"/ERiC-${version:?}-Darwin-universal.jar https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-${version:?}-Darwin-universal.jar
+}
+
+function eric_dl {
+  echo "downloading $version"
+  if [ "${version:?}" \< "37.3." ]; then
+    eric_dl_old
+  else
+    eric_dl_new
+  fi
 }
 
 function eric_unzip {
