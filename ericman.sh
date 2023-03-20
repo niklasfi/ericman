@@ -48,10 +48,20 @@ function eric_dl {
 function eric_unzip {
   echo "unzipping ${version:?}"
 
-  unzip -u "${dir}/ERiC-${version:?}-Dokumentation.zip" -d "${dir}"
-  unzip -u "${dir}/ERiC-${version:?}-Schemadokumentation.zip" -d "${dir}"
-  unzip -u "${dir}/ERiC-${version:?}-Linux-x86_64.jar" -d "${dir}" -x "META-INF/*"
-  unzip -u "${dir}/ERiC-${version:?}-Darwin-universal.jar" -d "${dir}" -x "META-INF/*"
+  tmp="$(mktemp -d)"
+
+  unzip -u "${dir}/ERiC-${version:?}-Dokumentation.zip" -d "${tmp:?}"
+  unzip -u "${dir}/ERiC-${version:?}-Schemadokumentation.zip" -d "${tmp:?}"
+  unzip -u "${dir}/ERiC-${version:?}-Linux-x86_64.jar" -d "${tmp:?}" -x "META-INF/*"
+  unzip -u "${dir}/ERiC-${version:?}-Darwin-universal.jar" -d "${tmp:?}" -x "META-INF/*"
+
+  mkdir -p "${dir:?}/ERiC-${version:?}"
+
+  rsync -r --remove-source-files \
+    "${tmp:?}/ERiC-${version:?}/" \
+    "${tmp:?}/ERiC-$(echo ${version:?} | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+').0/" \
+    "${dir:?}/ERiC-${version:?}/"
+  rm -r "${tmp:?}"
 }
 
 function eric_activate {
