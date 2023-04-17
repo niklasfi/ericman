@@ -91,7 +91,7 @@ function eric_bundle {
     done
 
     if [ -f "${b}/.install" ]; then
-      "${b}/.install" "${output}"
+      "${b}/.install" "${output}" "${version}"
     fi
 
     ln -nfs "./ERiC-${version:?}-$(basename "${b}" .bundle)" "${dir}/active-$(basename "${b}" .bundle)"
