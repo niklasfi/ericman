@@ -17,7 +17,7 @@ fi
 version=${1:-$(cat "${dir:?}"/VERSION)}
 shift
 
-if !(echo "${version:?}" | grep -Eq '^[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:digit:]]$'); then
+if !(echo "${version:?}" | grep -Eq '^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$'); then
   echo "VERSION must look like 37.2.6.0"
   exit -1
 fi
@@ -71,7 +71,7 @@ function eric_activate {
 }
 
 function eric_bundle {
-  version="$(readlink "${dir}/active" | grep -Eo '[[:digit:]]+\.[[:digit:]]\.[[:digit:]]\.[[:digit:]]$')"
+  version="$(readlink "${dir}/active" | grep -Eo '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$')"
 
   for b in "${dir}/bundle/"*.bundle; do
     echo "$(basename "${b}" .bundle)"
