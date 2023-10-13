@@ -17,7 +17,6 @@ else
 fi
 
 version=${1:-$(cat "${dir:?}"/VERSION)}
-shift
 
 if !(echo "${version:?}" | grep -Eq '^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$'); then
   echo "VERSION must look like 37.2.6.0"
