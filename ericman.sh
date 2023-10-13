@@ -23,17 +23,17 @@ if !(echo "${version:?}" | grep -Eq '^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.
 fi
 
 function eric_dl_old {
-  curl -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
-  curl -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Schemadokumentation.zip
-  curl -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Linux-x86_64.jar
-  curl -C - -o "${dir}"/ERiC-${version:?}-Darwin-universal.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Darwin-universal.jar
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Schemadokumentation.zip
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Linux-x86_64.jar
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Darwin-universal.jar https://download.elster.de/download/eric_${version:0:2}/ERiC-${version:?}-Darwin-universal.jar
 }
 
 function eric_dl_new {
-  curl -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
-  curl -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-$(echo ${version:?} | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+').0-Schemadokumentation.zip
-  curl -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-$(echo ${version:?} | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+').0-Linux-x86_64.jar
-  curl -C - -o "${dir}"/ERiC-${version:?}-Darwin-universal.jar https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-$(echo ${version:?} | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+').0-Darwin-universal.jar
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Dokumentation.zip https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-${version:?}-Dokumentation.zip
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Schemadokumentation.zip https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-$(echo ${version:?} | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+').0-Schemadokumentation.zip
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Linux-x86_64.jar https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-$(echo ${version:?} | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+').0-Linux-x86_64.jar
+  curl --fail -C - -o "${dir}"/ERiC-${version:?}-Darwin-universal.jar https://download.elster.de/download/eric/eric_${version:0:2}/ERiC-$(echo ${version:?} | grep -oE '^[0-9]+\.[0-9]+\.[0-9]+').0-Darwin-universal.jar
 }
 
 function eric_dl {
