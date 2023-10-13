@@ -7,6 +7,8 @@
 
 # treat globs without matches as empty lists
 shopt -s nullglob
+set -o pipefail
+set -e
 
 if [ -n "${ERICMAN_CONTEXT}" ]; then
   dir="${ERICMAN_CONTEXT}"
