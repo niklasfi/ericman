@@ -83,23 +83,9 @@ function eric_bundle {
       --exclude ".install" \
       "${b}/" "${output}/"
 
-# we are converting all line breaks of the xsd files with dos2unix to LF because it is inconsistent in eric (sometimes LF, sometimes CRLF)
-    if type -p dos2unix; then
-      echo "running dos2unix for all .xsd files in output folder"
-      for any_file in "${output}/"*.xsd; do
-        if ! dos2unix ${any_file}; then
-          echo "dos2unix FAILED"
-          exit -1
-        fi
-      done
-    else
-      echo "FAILED! You need to install dos2unix so that the CRLF linebreaks can be converted to LF"
-      exit -1
-    fi
-
     for p in "${b}/"*".${version}.patch"; do
       f="$(basename "${p}" ".${version}.patch")"
-      if ! patch -d "${output}" < "${p}"; then
+      if ! patch --ignore-whitespace -d "${output}" < "${p}"; then
         echo "PATCHING FAILED"
         exit -1
       fi
