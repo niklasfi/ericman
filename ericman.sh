@@ -85,7 +85,7 @@ function eric_bundle {
 
     for p in "${b}/"*".${version}.patch"; do
       f="$(basename "${p}" ".${version}.patch")"
-      if ! patch -d "${output}" < "${p}"; then
+      if ! patch --ignore-whitespace -d "${output}" < "${p}"; then
         echo "PATCHING FAILED"
         exit -1
       fi
