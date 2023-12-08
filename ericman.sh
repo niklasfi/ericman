@@ -79,9 +79,14 @@ function eric_bundle {
 
     output="${dir}/ERiC-${version:?}-$(basename "${b}" .bundle)"
     rsync --recursive --copy-links --delete \
+      --exclude "*.pre-patch" \
       --exclude "*.patch" \
       --exclude ".install" \
       "${b}/" "${output}/"
+
+    if [ -f "${b}/.pre-patch" ]; then
+      "${b}/.pre-patch" "${output}" "${version}"
+    fi
 
     for p in "${b}/"*".${version}.patch"; do
       f="$(basename "${p}" ".${version}.patch")"
